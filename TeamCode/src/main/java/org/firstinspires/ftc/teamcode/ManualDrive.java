@@ -4,13 +4,10 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 // FTC Dashboard
 
-// COMMENT ME!
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
-// DONT COMMENT BELOW ME!  
 import static org.firstinspires.ftc.teamcode.util.Misc.Clamp;
 import static java.lang.Math.abs;
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -27,7 +24,7 @@ import java.util.Locale;
 @TeleOp
 public class ManualDrive extends LinearOpMode {
     //static double LAUNCHER_STICK_SENSITIVITY =8.0;
-    // must be negative. 
+    // must be negative
     public Movement robotMovement;
     public Sensors robotSensors;
     public double launcher_throttle=0.0;
@@ -62,7 +59,6 @@ public class ManualDrive extends LinearOpMode {
         telemetry.update();
 
         while (opModeInInit()) {
-        ;
 		}
         robotMovement.RobotStart();
 		// start by spinning up
@@ -70,19 +66,9 @@ public class ManualDrive extends LinearOpMode {
 
         }
         while (opModeIsActive()) {
-            }
-            else if(isSpunUp && gamepad1.x && timeSinceLastSpin >= 100){
-                telemetry.addData("Launcher Mode:", "Spinning Down!");
-
-                launcher.setRPS(0);//launcher_throttle * -120.0);
-                isSpunUp = false;
-                timeSinceLastSpin = 0;
-            }
-
             
+
             telemetry.addData("Speed Distance (can fire)", canFire);
-            
-			// telemetry
 
             // position and heading
             Pose2D pos = odo.getPosition();
@@ -91,12 +77,11 @@ public class ManualDrive extends LinearOpMode {
 
             
 			robotMovement.setBrakeOnOff(gamepad1.a);
-            // Jog Control
-            robotMovement.jog_position(gamepad1.dpad_left, gamepad1.dpad_right, gamepad1.dpad_up, gamepad1.dpad_down);
             // turns robot based on stick input
             robotMovement.setTurnSpeed(gamepad1.left_stick_x*Configuration.TURN_MULTIPLIER); // 5 degrees/second
-            // movement vector used to have eventual compatibility w mechanum
-            robotMovement.movement_vector.put(1, -gamepad1.left_stick_y);
+			
+            robotMovement.movement_vector.put(0, gamepad1.left_stick_x);
+            robotMovement.movement_vector.put(1, gamepad1.left_stick_y);
 
             // Update Movement
             robotMovement.UpdateRobot(telemetry);
