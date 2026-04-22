@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 // FTC Dashboard
-
+import org.firstinspires.ftc.teamcode.util.Configuration;
 import com.acmerobotics.dashboard.FtcDashboard;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
 import static org.firstinspires.ftc.teamcode.util.Misc.Clamp;
@@ -11,7 +11,6 @@ import static java.lang.Math.abs;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.util.Configuration;
 import org.firstinspires.ftc.robotcore.external.matrices.VectorF;
 import org.firstinspires.ftc.teamcode.robot.Movement;
 import org.firstinspires.ftc.teamcode.robot.Sensors;
@@ -74,10 +73,9 @@ public class ManualDrive extends LinearOpMode {
             telemetry.addData("Position", data);
 
             
-			robotMovement.setBrakeOnOff(gamepad1.a);
             // turns robot based on stick input
-            robotMovement.setTurnSpeed(gamepad1.left_stick_x*Configuration.TURN_MULTIPLIER); // 5 degrees/second
-			
+            robotMovement.setTurnSpeed(gamepad1.left_stick_x*Configuration.TURN_MULTIPLIER);	
+
             robotMovement.movement_vector.put(0, gamepad1.left_stick_x);
             robotMovement.movement_vector.put(1, gamepad1.left_stick_y);
 

@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.robot;
 
-import static org.firstinspires.ftc.teamcode.util.Configuration.Configuration;
 import static org.firstinspires.ftc.teamcode.util.Misc.Clamp;
 import static org.firstinspires.ftc.teamcode.util.TrigMath.subtractAngles;
 
