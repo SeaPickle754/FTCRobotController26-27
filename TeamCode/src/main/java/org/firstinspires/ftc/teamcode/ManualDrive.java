@@ -61,14 +61,12 @@ public class ManualDrive extends LinearOpMode {
         while (opModeInInit()) {
 		}
         robotMovement.RobotStart();
-		// start by spinning up
         if(opModeIsActive()){
 
         }
         while (opModeIsActive()) {
             
 
-            telemetry.addData("Speed Distance (can fire)", canFire);
 
             // position and heading
             Pose2D pos = odo.getPosition();
