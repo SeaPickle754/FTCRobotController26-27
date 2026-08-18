@@ -22,8 +22,6 @@ import java.util.Locale;
 
 @TeleOp
 public class ManualDrive extends LinearOpMode {
-    //static double LAUNCHER_STICK_SENSITIVITY =8.0;
-    // must be negative
     public Movement robotMovement;
     public Sensors robotSensors;
     public double launcher_throttle=0.0;
